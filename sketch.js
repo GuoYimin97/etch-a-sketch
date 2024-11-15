@@ -65,24 +65,21 @@ function itchAndSketch() {
         }
         return color;
     }
-    // containerGrid.addEventListener('mousedown', () => {
-
-    //     isMouseDown = true;
-
-    //     containerGrid.addEventListener('mouseup', () => {
-    //         isMouseDown = false;
-    //     });
 
     gridSqrs.forEach(div => {
         div.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                // div.style.backgroundColor = getRandomColor();              
-                div.style.backgroundColor = "black";
-                let currentOpacity = Number(div.style.opacity);
-                if (currentOpacity < 1) {div.style.opacity = currentOpacity + 0.1;}
+                div.style.backgroundColor = getRandomColor();              
+                
+                // couldn't get the effect of increasingly darkening color, couldn't figure out why
+                // div.style.backgroundColor = "black";
+                // let currentOpacity = Number(div.style.opacity);
+                // console.log("currentOpacity is " + currentOpacity);
+                // if (currentOpacity < 1) { div.style.opacity = currentOpacity + 0.1; }
             }
         });
     });
+
     // });  
 
 }
