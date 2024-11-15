@@ -53,52 +53,41 @@ function askForGridperSide() {
 
 // change the square color when the mouse is clicked and held and the cursor hovers over the square 
 function itchAndSketch() {
+
     const gridSqrs = document.querySelectorAll('.gridSqrs');
+    let isMouseDown = true;
 
-    // Add mousedown event listener to the document
-    containerGrid.addEventListener('mousedown', () => {
-        isMouseDown = true;
-    });
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    // containerGrid.addEventListener('mousedown', () => {
 
-    // Add mouseup event listener to the document
-    containerGrid.addEventListener('mouseup', () => {
-        isMouseDown = false;
-    });
+    //     isMouseDown = true;
 
-    // Add mouseover event listener to each div
+    //     containerGrid.addEventListener('mouseup', () => {
+    //         isMouseDown = false;
+    //     });
+
     gridSqrs.forEach(div => {
         div.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                div.style.backgroundColor = 'lightblue';
+                // div.style.backgroundColor = getRandomColor();              
+                div.style.backgroundColor = "black";
+                let currentOpacity = Number(div.style.opacity);
+                if (currentOpacity < 1) {div.style.opacity = currentOpacity + 0.1;}
             }
         });
     });
+    // });  
+
 }
 
-
-function itchAndSketch2() {
-    const gridSqrs = document.querySelectorAll('.gridSqrs');
-
-    containerGrid.addEventListener('mousedown', () => {
-        
-        isMouseDown = true;
-        containerGrid.addEventListener('mouseup', () => {
-            isMouseDown = false;
-        });
-
-        gridSqrs.forEach(div => {
-            div.addEventListener('mouseover', () => {
-                if (isMouseDown) {
-                    div.style.backgroundColor = 'lightblue';
-                }
-            });
-        });
-    });
-    
-}
-
-containerGrid.addEventListener('mouseover', itchAndSketch2);
-
+containerGrid.addEventListener('mouseover', itchAndSketch);
 
 // clear the color of all grid squares
 function clearCurrentSketch() {
@@ -107,3 +96,4 @@ function clearCurrentSketch() {
         div.style.backgroundColor = 'white';
     });
 }
+
